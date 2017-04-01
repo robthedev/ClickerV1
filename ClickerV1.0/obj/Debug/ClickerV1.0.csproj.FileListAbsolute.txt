@@ -1,0 +1,6 @@
+C:\Users\jo\vsprojects\ClickerV1.0\ClickerV1.0\bin\HTML5 Boiler Plate v4.3.dll.config
+C:\Users\jo\vsprojects\ClickerV1.0\ClickerV1.0\bin\HTML5 Boiler Plate v4.3.dll
+C:\Users\jo\vsprojects\ClickerV1.0\ClickerV1.0\bin\HTML5 Boiler Plate v4.3.pdb
+C:\Users\jo\vsprojects\ClickerV1.0\ClickerV1.0\obj\Debug\ClickerV1.0.csprojResolveAssemblyReference.cache
+C:\Users\jo\vsprojects\ClickerV1.0\ClickerV1.0\obj\Debug\HTML5 Boiler Plate v4.3.dll
+C:\Users\jo\vsprojects\ClickerV1.0\ClickerV1.0\obj\Debug\HTML5 Boiler Plate v4.3.pdb
