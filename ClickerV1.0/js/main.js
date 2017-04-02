@@ -8,8 +8,8 @@ var Clicker = (function () {
     var clicks = 0;
 
     var init = function () {
-        addListItems();
-        hideBlocks();
+        $blocks.hide();
+        createListItems();
         $clickDisplay.html(0);
         trackClicks();
     };
@@ -25,20 +25,9 @@ var Clicker = (function () {
         });
     };
 
-    var createListItem = function (name, callback) {
-        var newitem = document.createElement("LI");
-        var nametext = document.createTextNode(name);
-        newitem.appendChild(nametext);
-        $namelist.append(newitem);
-        callback(newitem);
-        return newitem;
+    var addItemToList = function (item) {
+        $namelist.append(item);
     };
-
-    var hideBlocks = function () {
-        $blocks.each(function (i, el) {
-            $(this).hide();
-        });
-    }
 
     var showBlock = function () {
         var txt = $(this).text();
@@ -52,14 +41,18 @@ var Clicker = (function () {
         });
     };
 
-    var bindClick = function (el) {
-        el.addEventListener("click", showBlock);
+    var bindClick = function (item) {
+        item.addEventListener("click", showBlock);
     };
  
-    var addListItems = function () {
+    var createListItems = function () {
         $blocks.each(function (i, el) {
             var name = $(this).find('.name').html();
-            createListItem(name, bindClick);
+            var newitem = document.createElement("LI");
+            var nametext = document.createTextNode(name);
+            newitem.appendChild(nametext);
+            bindClick(newitem);
+            addItemToList(newitem);
         });
     };
 

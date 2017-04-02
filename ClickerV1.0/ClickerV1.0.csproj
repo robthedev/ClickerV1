@@ -69,6 +69,7 @@
     <Content Include="img\1464734919184.jpg" />
     <Content Include="img\jordan.jpg" />
     <Content Include="index.html" />
+    <Content Include="index2.html" />
     <Content Include="js\main.js" />
     <Content Include="js\newmain.js" />
     <Content Include="js\plugins.js" />
