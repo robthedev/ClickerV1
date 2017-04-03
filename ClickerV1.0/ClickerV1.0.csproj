@@ -70,7 +70,9 @@
     <Content Include="img\jordan.jpg" />
     <Content Include="index.html" />
     <Content Include="index2.html" />
+    <Content Include="index3.html" />
     <Content Include="js\main.js" />
+    <Content Include="js\main3.js" />
     <Content Include="js\newmain.js" />
     <Content Include="js\plugins.js" />
     <Content Include="js\vendor\jquery-1.10.2.min.js" />

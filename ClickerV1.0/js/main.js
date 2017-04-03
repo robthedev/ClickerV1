@@ -22,7 +22,7 @@ var Clicker = (function () {
                 val++;
                 changeHtml(clickDisplay, val);
             });
-        });
+        }); 
     };
 
     var addItemToList = function (item) {
