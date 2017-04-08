@@ -1,4 +1,4 @@
-﻿version 3
+﻿//version 3  
 
 $(function () {
     var model = {
@@ -87,14 +87,14 @@ $(function () {
         render: function (obj) {
             playersView.container = $('.container');
             var playerhtml = '';
-                    playerhtml += '<div class="player-box">'
-                    playerhtml += '<h1>' + obj.name + '</h1>'
-                    playerhtml += '<img class="player-img" src=" ' + obj.imgsrc + '"/>'
-                    playerhtml += '<div>' + obj.clicks + '</div>'
-                    playerhtml += '</div>';
+            playerhtml += '<div class="player-box">'
+            playerhtml += '<h1>' + obj.name + '</h1>'
+            playerhtml += '<img class="player-img" src=" ' + obj.imgsrc + '"/>'
+            playerhtml += '<div>' + obj.clicks + '</div>'
+            playerhtml += '</div>';
                 
-                    playersView.container.html(playerhtml);
-                    playersView.bindImgs(obj.name);
+            playersView.container.html(playerhtml);
+            playersView.bindImgs(obj.name);
         },
 
         bindImgs: function (playername) {
