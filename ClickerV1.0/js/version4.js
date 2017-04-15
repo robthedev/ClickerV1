@@ -81,37 +81,6 @@ $(function () {
 
     };
 
-    var playersView = {
-
-        init: function () {
-          
-            this.render();
-        },
-
-        render: function () {
-            playersView.container = $('.container');
-            var playerhtml = '';
-            var currentPlayer = controller.getCurrentPlayer();
-
-            playerhtml += '<div class="player-box">'
-            playerhtml += '<h1>' + currentPlayer.name + '</h1>'
-            playerhtml += '<img class="player-img" src=" ' + currentPlayer.imgsrc + '"/>'
-            playerhtml += '<div>' + currentPlayer.clicks + '</div>'
-            playerhtml += '</div>';
-                
-            playersView.container.html(playerhtml);
-            playersView.bindImgs(currentPlayer);
-        },
-
-        bindImgs: function (player) {
-            $('img.player-img').each(function (i, img) {
-                $(this).click(function () {
-                    controller.incrementClicks();
-                });
-            });
-        },
-    };
-
     var playersNameView = {
 
         init: function () {
@@ -122,6 +91,7 @@ $(function () {
 
         render: function () {
             var players = controller.getPlayers();
+            var btn;
             players.forEach(function (player) {
                 btn = document.createElement('button');
                 btn.textContent = player.name;
@@ -140,11 +110,41 @@ $(function () {
             });
         },
     };
+
+    var playersView = {
+
+        init: function () {
+          
+            this.render();
+        },
+
+        render: function () {
+            playersView.container = $('.container');
+            var playerhtml = '';
+            var currentPlayer = controller.getCurrentPlayer();
+
+            playerhtml += '<div class="player-box">';
+            playerhtml += '<h1>' + currentPlayer.name + '</h1>';
+            playerhtml += '<img class="player-img" src=" ' + currentPlayer.imgsrc + '"/>';
+            playerhtml += '<div>' + currentPlayer.clicks + '</div>';
+            playerhtml += '</div>';
+                
+            playersView.container.html(playerhtml);
+            playersView.bindImgs(currentPlayer);
+        },
+
+        bindImgs: function (player) {
+            $('img.player-img').each(function (i, img) {
+                $(this).click(function () {
+                    controller.incrementClicks();
+                });
+            });
+        },
+    };
         
     var adminFormView = {
 
         init: function () {
-            var self = this;
 
             $adminBtn = $('.admin-btn');
             $cancelBtn = $('.cancel-btn');
@@ -166,28 +166,36 @@ $(function () {
             });
 
             $saveBtn.click(function (e) {
-                var currentPlayer = controller.getCurrentPlayer();
-                var r = self.$nameInput.attr('value');
-                currentPlayer.name = r;
-                console.log(r);
-                
                 playersView.render();
+                controller.setFormNotVisible();
                 adminFormView.render();
                 e.preventDefault();
+            });
+
+            this.$nameInput.keyup(function () {
+                var currentPlayer = controller.getCurrentPlayer();
+                var updatedName = this.value;
+                currentPlayer.name = updatedName;
+            });
+
+            this.$clicksInput.keyup(function () {
+                var currentPlayer = controller.getCurrentPlayer();
+                var updatedClicks = this.value;
+                currentPlayer.clicks = updatedClicks;
             });
 
             adminFormView.render();
         },
         
         render: function () {
-            
+           
             var currentPlayer = controller.getCurrentPlayer();
             var isFormVisible = controller.getFormVisible();
             if (isFormVisible) {
-
-                this.$nameInput.attr('value', currentPlayer.name);
-                this.$imgurlInput.attr('value', currentPlayer.imgsrc);
-                this.$clicksInput.attr('value', currentPlayer.clicks);
+              
+                this.$nameInput.val(currentPlayer.name);
+                this.$imgurlInput.val(currentPlayer.imgsrc);
+                this.$clicksInput.val(currentPlayer.clicks);
                 this.$adminForm.show();
                 return;
             }
